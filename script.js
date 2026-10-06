@@ -134,206 +134,415 @@ function initMenu3D() {
   });
 }
 
-// ===== NEW CINEMATIC 3D SCROLLING EFFECTS =====
+// ===== CINEMATIC 3D SCROLLING EFFECTS =====
 function initCinematic3DScrolling() {
   if (!window.gsap || !window.ScrollTrigger || prefersReducedMotion || shouldReduceHeavyMotion) return;
 
-  // Parallax depth layers for sections
-  const sections = document.querySelectorAll('.section-transition');
-  sections.forEach((section, index) => {
-    gsap.registerEffect({
-      name: 'cinemaScroll',
-      effect: (targets, config) => {
-        return gsap.to(targets, {
-          scrollTrigger: {
-            trigger: targets[0],
-            start: 'top 80%',
-            end: 'center 30%',
-            scrub: 1.2,
-            markers: false,
-          },
-          y: config.yOffset || 0,
-          opacity: config.opacity || 1,
-          scale: config.scale || 1,
-          rotationX: config.rotationX || 0,
-          ease: 'none',
-        });
-      },
-    });
-
-    gsap.effects.cinemaScroll(section, {
-      yOffset: -60,
-      opacity: 1,
-      rotationX: 5,
-    });
-  });
-
-  // Staggered menu card entrance animations
-  const menuGrid = document.querySelector('.menu-grid');
-  if (menuGrid) {
-    gsap.from('.menu-card', {
-      scrollTrigger: {
-        trigger: menuGrid,
-        start: 'top 70%',
-        end: 'top 20%',
-        scrub: 1,
-        markers: false,
-      },
-      y: 80,
-      opacity: 0,
-      rotationY: 25,
-      stagger: {
-        amount: 0.6,
-        from: 'center',
-      },
-      ease: 'power2.out',
-    });
-  }
-
-  // Gallery items with depth effect
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  galleryItems.forEach((item, i) => {
-    gsap.from(item, {
-      scrollTrigger: {
-        trigger: item,
-        start: 'top 85%',
-        end: 'top 30%',
-        scrub: 1,
-        markers: false,
-      },
-      y: 100 + i * 20,
-      opacity: 0,
-      scale: 0.85,
-      rotationY: -15 + i * 5,
-      ease: 'power2.out',
-    });
-  });
-
-  // About section - image tilt and content slide
-  const aboutImage = document.querySelector('.about-image-wrap img');
-  if (aboutImage) {
-    gsap.to(aboutImage, {
-      scrollTrigger: {
-        trigger: aboutImage,
-        start: 'top 70%',
-        end: 'center 20%',
-        scrub: 1.2,
-        markers: false,
-      },
-      rotationY: 12,
-      rotationX: -8,
-      scale: 1.08,
-      y: -40,
-      ease: 'none',
-    });
-  }
-
-  // Experience feature cards - floating entrance
-  const featureCards = document.querySelectorAll('.feature-card');
-  featureCards.forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 80%',
-        end: 'top 40%',
-        scrub: 1,
-        markers: false,
-      },
-      y: 60,
-      opacity: 0,
-      rotationX: 20,
-      stagger: 0.15,
-      ease: 'back.out(1.2)',
-    });
-  });
-
-  // Testimonials - perspective scroll
-  const testimonials = document.querySelectorAll('blockquote');
-  testimonials.forEach((quote, i) => {
-    gsap.from(quote, {
-      scrollTrigger: {
-        trigger: quote,
-        start: 'top 75%',
-        end: 'top 35%',
-        scrub: 1,
-        markers: false,
-      },
-      x: i % 2 === 0 ? -80 : 80,
-      opacity: 0,
-      rotationY: i % 2 === 0 ? 30 : -30,
-      ease: 'power2.out',
-    });
-  });
-
-  // Text reveal on scroll - eyebrows and headings
-  const eyebrows = document.querySelectorAll('.eyebrow');
-  const headings = document.querySelectorAll('h2');
-  
-  const textElements = [...eyebrows, ...headings];
-  textElements.forEach((el) => {
-    gsap.from(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        end: 'top 65%',
-        scrub: 0.8,
-        markers: false,
-      },
-      y: 30,
-      opacity: 0,
-      ease: 'power2.out',
-    });
-  });
-
-  // Parallax background depth
+  // Hero parallax background with zoom
   const heroBg = document.querySelector('.hero-bg-layer');
+  const heroTitle = document.querySelector('.hero-title');
+  const heroSubtitle = document.querySelector('.hero-subtitle');
+  const heroText = document.querySelector('.hero-text');
+  const heroStats = document.querySelector('.hero-stats');
+
   if (heroBg) {
     gsap.to(heroBg, {
       scrollTrigger: {
         trigger: '.hero',
         start: 'top top',
-        end: 'bottom top',
-        scrub: 1,
-        markers: false,
+        end: 'bottom center',
+        scrub: 2,
       },
-      y: 100,
+      y: 150,
+      scale: 1.1,
       ease: 'none',
     });
   }
 
-  // Reservation form entrance - scale and rotate
+  // Hero text cinematic fade-up on scroll
+  if (heroTitle) {
+    gsap.from(heroTitle, {
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top 50%',
+        end: 'center top',
+        scrub: 1.5,
+      },
+      y: 60,
+      opacity: 0.3,
+      ease: 'power2.out',
+    });
+  }
+
+  if (heroSubtitle) {
+    gsap.from(heroSubtitle, {
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top 55%',
+        end: 'center 5%',
+        scrub: 1.8,
+      },
+      y: 80,
+      opacity: 0,
+      ease: 'power2.out',
+    });
+  }
+
+  if (heroText) {
+    gsap.from(heroText, {
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top 60%',
+        end: 'center 10%',
+        scrub: 2,
+      },
+      y: 100,
+      opacity: 0,
+      ease: 'power2.out',
+    });
+  }
+
+  if (heroStats) {
+    gsap.from(heroStats, {
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top 65%',
+        end: 'center 15%',
+        scrub: 2.2,
+      },
+      y: 120,
+      opacity: 0,
+      ease: 'power2.out',
+    });
+  }
+
+  // About section - image cinematic reveal with depth
+  const aboutImage = document.querySelector('.about-image-wrap img');
+  const aboutCopy = document.querySelector('.about-copy');
+
+  if (aboutImage) {
+    gsap.fromTo(aboutImage,
+      {
+        clipPath: 'inset(20% 0% 20% 0%)',
+        opacity: 0.5,
+      },
+      {
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 70%',
+          end: 'center 20%',
+          scrub: 2,
+        },
+        clipPath: 'inset(0% 0% 0% 0%)',
+        opacity: 1,
+        rotationY: 8,
+        rotationX: -5,
+        scale: 1.05,
+        ease: 'power2.out',
+      }
+    );
+  }
+
+  if (aboutCopy) {
+    gsap.from(aboutCopy, {
+      scrollTrigger: {
+        trigger: '.about',
+        start: 'top 65%',
+        end: 'center 30%',
+        scrub: 1.8,
+      },
+      x: -100,
+      opacity: 0,
+      rotationY: 15,
+      ease: 'power2.out',
+    });
+  }
+
+  // Menu section heading - cinematic reveal
+  const menuHeading = document.querySelector('.menu .section-heading');
+  if (menuHeading) {
+    const eyebrow = menuHeading.querySelector('.eyebrow');
+    const h2 = menuHeading.querySelector('h2');
+
+    if (eyebrow) {
+      gsap.from(eyebrow, {
+        scrollTrigger: {
+          trigger: '.menu',
+          start: 'top 80%',
+          end: 'top 50%',
+          scrub: 1.5,
+        },
+        y: 30,
+        opacity: 0,
+        ease: 'power2.out',
+      });
+    }
+
+    if (h2) {
+      gsap.from(h2, {
+        scrollTrigger: {
+          trigger: '.menu',
+          start: 'top 75%',
+          end: 'top 45%',
+          scrub: 1.8,
+        },
+        y: 50,
+        opacity: 0,
+        rotationX: 20,
+        ease: 'back.out(1.2)',
+      });
+    }
+  }
+
+  // Menu cards - staggered cinematic entrance with 3D rotation
+  const menuGrid = document.querySelector('.menu-grid');
+  if (menuGrid) {
+    const cards = menuGrid.querySelectorAll('.menu-card');
+    
+    cards.forEach((card, index) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: menuGrid,
+          start: 'top 85%',
+          end: 'top 30%',
+          scrub: 2,
+        },
+        y: 150 + index * 30,
+        x: index % 2 === 0 ? -80 : 80,
+        opacity: 0,
+        rotationY: index % 2 === 0 ? 35 : -35,
+        rotationX: 25,
+        scale: 0.8,
+        stagger: {
+          amount: 0.3,
+          from: 'center',
+        },
+        ease: 'power2.out',
+      });
+    });
+  }
+
+  // Menu card image zoom on scroll
+  const menuImages = document.querySelectorAll('.menu-image img');
+  menuImages.forEach((img, i) => {
+    gsap.to(img, {
+      scrollTrigger: {
+        trigger: img.closest('.menu-card'),
+        start: 'top 70%',
+        end: 'bottom 30%',
+        scrub: 2,
+      },
+      scale: 1.15,
+      ease: 'none',
+    });
+  });
+
+  // Gallery section cinematic reveal
+  const galleryHeading = document.querySelector('.gallery .section-heading');
+  if (galleryHeading) {
+    gsap.from(galleryHeading, {
+      scrollTrigger: {
+        trigger: '.gallery',
+        start: 'top 80%',
+        end: 'top 50%',
+        scrub: 1.5,
+      },
+      y: 40,
+      opacity: 0,
+      ease: 'power2.out',
+    });
+  }
+
+  // Gallery items - layered cinematic entrance
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  galleryItems.forEach((item, i) => {
+    const delay = i * 0.15;
+    gsap.from(item, {
+      scrollTrigger: {
+        trigger: item,
+        start: 'top 85%',
+        end: 'top 35%',
+        scrub: 2,
+      },
+      y: 120 + i * 25,
+      opacity: 0,
+      scale: 0.85,
+      rotationY: -20 + i * 8,
+      rotationX: 15,
+      ease: 'power2.out',
+    });
+
+    // Parallax effect for gallery images
+    const galleryImg = item.querySelector('img');
+    if (galleryImg) {
+      gsap.to(galleryImg, {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 1.5,
+        },
+        scale: 1.12,
+        y: -30,
+        ease: 'none',
+      });
+    }
+  });
+
+  // Experience section - floating card entrance
+  const experienceHeading = document.querySelector('.experience .section-heading');
+  if (experienceHeading) {
+    gsap.from(experienceHeading, {
+      scrollTrigger: {
+        trigger: '.experience',
+        start: 'top 80%',
+        end: 'top 50%',
+        scrub: 1.5,
+      },
+      y: 40,
+      opacity: 0,
+      ease: 'power2.out',
+    });
+  }
+
+  const featureCards = document.querySelectorAll('.feature-card');
+  featureCards.forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: '.experience',
+        start: 'top 75%',
+        end: 'center 25%',
+        scrub: 2,
+      },
+      y: 100 + i * 40,
+      x: i === 1 ? 0 : i === 0 ? -60 : 60,
+      opacity: 0,
+      rotationY: i === 0 ? -20 : i === 2 ? 20 : 0,
+      rotationX: 20,
+      scale: 0.9,
+      stagger: 0.1,
+      ease: 'back.out(1.3)',
+    });
+  });
+
+  // Testimonials - perspective scroll reveal
+  const testimonialsHeading = document.querySelector('.testimonials .section-heading');
+  if (testimonialsHeading) {
+    gsap.from(testimonialsHeading, {
+      scrollTrigger: {
+        trigger: '.testimonials',
+        start: 'top 80%',
+        end: 'top 50%',
+        scrub: 1.5,
+      },
+      y: 40,
+      opacity: 0,
+      ease: 'power2.out',
+    });
+  }
+
+  const testimonials = document.querySelectorAll('blockquote');
+  testimonials.forEach((quote, i) => {
+    gsap.from(quote, {
+      scrollTrigger: {
+        trigger: quote,
+        start: 'top 80%',
+        end: 'top 35%',
+        scrub: 2,
+      },
+      x: i % 2 === 0 ? -120 : 120,
+      y: 60,
+      opacity: 0,
+      rotationY: i % 2 === 0 ? 40 : -40,
+      rotationZ: i % 2 === 0 ? -8 : 8,
+      scale: 0.85,
+      ease: 'power2.out',
+    });
+  });
+
+  // Reservation section - cinematic scale and rotate
+  const reservationHeading = document.querySelector('.reservation .section-heading');
+  if (reservationHeading) {
+    gsap.from(reservationHeading, {
+      scrollTrigger: {
+        trigger: '.reservation',
+        start: 'top 85%',
+        end: 'top 55%',
+        scrub: 1.5,
+      },
+      y: 40,
+      opacity: 0,
+      ease: 'power2.out',
+    });
+  }
+
+  const reservationWrap = document.querySelector('.reservation-wrap');
+  if (reservationWrap) {
+    gsap.from(reservationWrap, {
+      scrollTrigger: {
+        trigger: reservationWrap,
+        start: 'top 80%',
+        end: 'top 30%',
+        scrub: 2.2,
+      },
+      scale: 0.88,
+      opacity: 0,
+      rotationX: 25,
+      rotationY: -5,
+      y: 100,
+      ease: 'back.out(1.4)',
+    });
+  }
+
   const reservationForm = document.querySelector('.reservation-form');
   if (reservationForm) {
     gsap.from(reservationForm, {
       scrollTrigger: {
-        trigger: reservationForm,
+        trigger: reservationWrap,
         start: 'top 75%',
-        end: 'top 35%',
-        scrub: 1,
-        markers: false,
+        end: 'top 25%',
+        scrub: 2.5,
       },
-      scale: 0.9,
+      x: 80,
       opacity: 0,
-      rotationX: 15,
-      y: 60,
-      ease: 'back.out(1.3)',
+      rotationY: 20,
+      rotationX: -15,
+      scale: 0.9,
+      ease: 'power2.out',
     });
   }
 
-  // Header sticky scroll effect
+  // Header parallax and blur effect
   const header = document.querySelector('.site-header');
   if (header) {
     gsap.to(header, {
       scrollTrigger: {
         trigger: 'body',
         start: 'top top',
-        end: 'top 300px',
-        scrub: 1,
-        markers: false,
+        end: 'top 500px',
+        scrub: 1.5,
         onUpdate: (self) => {
           const progress = self.progress;
-          header.style.backdropFilter = `blur(${18 + progress * 6}px)`;
-          header.style.backgroundColor = `rgba(9, 9, 12, ${0.44 + progress * 0.26})`;
+          header.style.backdropFilter = `blur(${12 + progress * 8}px)`;
+          header.style.backgroundColor = `rgba(9, 9, 12, ${0.44 + progress * 0.36})`;
+          header.style.borderBottomColor = `rgba(255, 255, 255, ${0.04 + progress * 0.06})`;
+        },
+      },
+    });
+  }
+
+  // Scroll progress indicator for cinematic feel
+  const pageShell = document.querySelector('.page-shell');
+  if (pageShell) {
+    gsap.to(pageShell, {
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          document.documentElement.style.setProperty('--scroll-progress', progress);
         },
       },
     });
