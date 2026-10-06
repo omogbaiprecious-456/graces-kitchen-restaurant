@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Grace's Kitchen — a premium Nigerian restaurant serving authentic flavors, warm hospitality, and unforgettable dining experiences."
+    />
+    <title>Grace's Kitchen | Nigerian Restaurant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <div class="brand-block">
+            <div class="brand-mark">G</div>
+            <div>
+              <p class="brand-name">Grace's Kitchen</p>
+              <span class="brand-tag">Nigerian Dining</span>
+            </div>
+          </div>
+
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#experience">Experience</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <div class="nav-actions">
+            <a class="link-btn" href="#reservation">Book Table</a>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">Authentic • Warm • Memorable</p>
+              <h1>Where Nigerian flavor meets timeless hospitality.</h1>
+              <p class="hero-text">
+                Grace's Kitchen brings together the richness of traditional Nigerian cuisine,
+                vibrant culture, and a refined dining atmosphere designed for everyday celebration.
+              </p>
+
+              <div class="hero-actions">
+                <a class="primary-btn" href="#reservation">Reserve Your Table</a>
+                <a class="secondary-btn" href="#menu">Explore Menu</a>
+              </div>
+
+              <div class="hero-stats">
+                <div>
+                  <strong>4.9/5</strong>
+                  <span>Guest Rating</span>
+                </div>
+                <div>
+                  <strong>35 min</strong>
+                  <span>Average Service</span>
+                </div>
+                <div>
+                  <strong>7k+</strong>
+                  <span>Happy Diners</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Featured dishes illustration">
+              <div class="visual-panel main-panel">
+                <img
+                  src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
+                  alt="Nigerian stew and rice dish"
+                />
+                <div class="floating-tag tag-top">House Special</div>
+                <div class="floating-card card-left">
+                  <p>Signature Jollof</p>
+                  <span>Smoky, rich & aromatic</span>
+                </div>
+              </div>
+
+              <div class="visual-panel side-panel">
+                <img
+                  src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=700&q=80"
+                  alt="Nigerian grilled delicacies"
+                />
+                <div class="floating-tag tag-bottom">Chef's Choice</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="about" id="about">
+          <div class="container about-grid">
+            <div class="about-image-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+                alt="Restaurant interior and warm ambiance"
+              />
+            </div>
+
+            <div class="about-copy">
+              <p class="eyebrow dark">Our Story</p>
+              <h2>Rooted in culture, inspired by family.</h2>
+              <p>
+                Grace's Kitchen was built on the belief that food should nourish the soul as much as the body.
+                We celebrate the heart of Nigerian cuisine through rich sauces, fresh ingredients, and meals prepared
+                with the love and tradition of home.
+              </p>
+              <p>
+                From comforting classics to vibrant modern plates, every dish reflects hospitality, craftsmanship,
+                and a story worth sharing around the table.
+              </p>
+
+              <ul class="feature-list">
+                <li>Fresh seasonal ingredients sourced with care</li>
+                <li>Traditional recipes with a refined presentation</li>
+                <li>Warm, welcoming dining for every occasion</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="menu section-space" id="menu">
+          <div class="container">
+            <div class="section-heading">
+              <p class="eyebrow">Menu Highlights</p>
+              <h2>Flavors crafted to linger.</h2>
+            </div>
+
+            <div class="menu-filters">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="specials">Specials</button>
+              <button class="filter-btn" data-filter="rice">Rice Dishes</button>
+              <button class="filter-btn" data-filter="grill">Grill & BBQ</button>
+              <button class="filter-btn" data-filter="soup">Soups</button>
+            </div>
+
+            <div class="menu-grid">
+              <article class="menu-card" data-category="specials rice">
+                <div class="menu-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80"
+                    alt="Jollof rice"
+                  />
+                </div>
+                <div class="menu-body">
+                  <div class="menu-topline">
+                    <h3>Classic Jollof Rice</h3>
+                    <span>₦ 5,500</span>
+                  </div>
+                  <p>Fragrant tomato rice served with grilled chicken, plantain, and pepper sauce.</p>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="specials grill">
+                <div class="menu-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80"
+                    alt="Grilled chicken and fish"
+                  />
+                </div>
+                <div class="menu-body">
+                  <div class="menu-topline">
+                    <h3>Fire-Grilled Chicken</h3>
+                    <span>₦ 8,200</span>
+                  </div>
+                  <p>Succulent grilled chicken with herb seasoning and a tangy herb glaze.</p>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="soup">
+                <div class="menu-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                    alt="Nigerian soup"
+                  />
+                </div>
+                <div class="menu-body">
+                  <div class="menu-topline">
+                    <h3>Egusi Soup</h3>
+                    <span>₦ 6,800</span>
+                  </div>
+                  <p>Ground melon soup simmered with leafy greens, assorted meat, and pounded yam.</p>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="rice">
+                <div class="menu-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80"
+                    alt="Fried rice dish"
+                  />
+                </div>
+                <div class="menu-body">
+                  <div class="menu-topline">
+                    <h3>Yam & Plantain Platter</h3>
+                    <span>₦ 7,500</span>
+                  </div>
+                  <p>Golden yam fries and plantain with grilled protein, sauce, and a fresh salad.</p>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="grill">
+                <div class="menu-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80"
+                    alt="Fish meals"
+                  />
+                </div>
+                <div class="menu-body">
+                  <div class="menu-topline">
+                    <h3>Grilled Tilapia</h3>
+                    <span>₦ 9,400</span>
+                  </div>
+                  <p>Fresh fish flame-grilled with pepper spice and served with sautéed greens.</p>
+                </div>
+              </article>
+
+              <article class="menu-card" data-category="specials soup">
+                <div class="menu-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80"
+                    alt="African stew and meat"
+                  />
+                </div>
+                <div class="menu-body">
+                  <div class="menu-topline">
+                    <h3>Grace's Family Feast</h3>
+                    <span>₦ 15,500</span>
+                  </div>
+                  <p>A sharing platter with jollof, grilled meats, peppers, salads, and homemade sides.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="experience section-space" id="experience">
+          <div class="container">
+            <div class="section-heading small">
+              <p class="eyebrow">Why Guests Return</p>
+              <h2>Thoughtful dining, beautifully served.</h2>
+            </div>
+
+            <div class="feature-grid">
+              <div class="feature-card">
+                <div class="feature-icon">01</div>
+                <h3>Signature Flavours</h3>
+                <p>Traditional recipes elevated with fresh ingredients and chef-crafted balance.</p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon">02</div>
+                <h3>Warm Atmosphere</h3>
+                <p>Rich colors, cozy spaces, and welcoming service create an unforgettable mood.</p>
+              </div>
+
+              <div class="feature-card">
+                <div class="feature-icon">03</div>
+                <h3>Luxury Dining</h3>
+                <p>Elegant plating and a refined interior designed for celebrations and family dinners.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="gallery section-space" id="gallery">
+          <div class="container">
+            <div class="section-heading">
+              <p class="eyebrow">Gallery</p>
+              <h2>Moments worth savoring.</h2>
+            </div>
+
+            <div class="gallery-grid">
+              <div class="gallery-item tall">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80" alt="Restaurant dining table" />
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80" alt="Nigerian food plate" />
+              </div>
+              <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=700&q=80" alt="Chef preparing food" />
+              </div>
+              <div class="gallery-item wide">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80" alt="Restaurant ambiance" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="testimonials section-space">
+          <div class="container">
+            <div class="section-heading small">
+              <p class="eyebrow">Guest Love</p>
+              <h2>People come for the food, stay for the feeling.</h2>
+            </div>
+
+            <div class="testimonial-grid">
+              <blockquote>
+                “The jollof was exceptional — deeply flavorful, warm, and beautifully served. It felt like home, only better.”
+                <footer>— Ada O.</footer>
+              </blockquote>
+
+              <blockquote>
+                “A beautiful place for dinner with family. The ambiance, hospitality, and quality were all top-tier.”
+                <footer>— Tunde B.</footer>
+              </blockquote>
+
+              <blockquote>
+                “Grace's Kitchen captures the soul of Nigerian food in the most elegant way. Every detail feels intentional.”
+                <footer>— Chiamaka E.</footer>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+
+        <section class="reservation section-space" id="reservation">
+          <div class="container reservation-wrap">
+            <div class="reservation-copy">
+              <p class="eyebrow">Reserve</p>
+              <h2>Book your table for a memorable evening.</h2>
+              <p>
+                Whether it's a romantic dinner, family gathering, or a celebration, we create a warm dining space for every occasion.
+              </p>
+            </div>
+
+            <form class="reservation-form" id="bookingForm">
+              <div class="input-group">
+                <label for="name">Full Name</label>
+                <input id="name" type="text" name="name" placeholder="Your name" required />
+              </div>
+
+              <div class="input-group">
+                <label for="date">Date</label>
+                <input id="date" type="date" name="date" required />
+              </div>
+
+              <div class="input-group">
+                <label for="time">Time</label>
+                <input id="time" type="time" name="time" required />
+              </div>
+
+              <div class="input-group">
+                <label for="guests">Guests</label>
+                <select id="guests" name="guests">
+                  <option value="2">2 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="8">8 Guests</option>
+                </select>
+              </div>
+
+              <button type="submit" class="primary-btn full-width">Confirm Reservation</button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="container footer-grid">
+          <div>
+            <div class="brand-block footer-brand">
+              <div class="brand-mark">G</div>
+              <div>
+                <p class="brand-name">Grace's Kitchen</p>
+                <span class="brand-tag">Nigerian Dining</span>
+              </div>
+            </div>
+            <p class="footer-copy">Serving joy, flavor, and tradition in every dish.</p>
+          </div>
+
+          <div>
+            <h3>Visit</h3>
+            <ul>
+              <li>18 Victoria Island Road</li>
+              <li>Lagos, Nigeria</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Contact</h3>
+            <ul>
+              <li>+234 800 123 4567</li>
+              <li>hello@graceskitchen.ng</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Hours</h3>
+            <ul>
+              <li>Mon–Thu: 12pm - 10pm</li>
+              <li>Fri–Sun: 12pm - 11pm</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="container">
+            <p>© <span id="year"></span> Grace's Kitchen. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
