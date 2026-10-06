@@ -3,9 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0a0d" />
     <meta
       name="description"
       content="Grace's Kitchen — a premium Nigerian restaurant serving authentic flavors, warm hospitality, and unforgettable dining experiences."
+    />
+    <meta
+      name="keywords"
+      content="Grace's Kitchen, Nigerian restaurant, Victoria Island restaurant, Lagos fine dining, jollof rice, Nigerian cuisine"
     />
     <title>Grace's Kitchen | Nigerian Restaurant</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,6 +44,15 @@
 
           <div class="nav-actions">
             <a class="link-btn" href="#reservation">Book Table</a>
+            <a
+              class="whatsapp-btn"
+              href="https://wa.me/2348001234567?text=Hello%20Grace%27s%20Kitchen%2C%20I%20would%20like%20to%20make%20a%20reservation."
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Book via WhatsApp"
+            >
+              Book via WhatsApp
+            </a>
             <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
               <span></span>
               <span></span>
@@ -49,13 +63,12 @@
       </header>
 
       <main>
-        <!-- HERO with Parallax -->
         <section class="hero" id="home">
           <div class="hero-bg-layer">
             <img
               class="hero-bg-image"
               src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=80"
-              alt="Hero background"
+              alt="Grace's Kitchen restaurant hero background"
             />
             <div class="hero-overlay"></div>
           </div>
@@ -73,9 +86,18 @@
               <div class="hero-actions">
                 <a class="primary-btn" href="#reservation">Reserve Your Table</a>
                 <a class="secondary-btn" href="#menu">Explore Menu</a>
+                <a
+                  class="whatsapp-btn"
+                  href="https://wa.me/2348001234567?text=Hello%20Grace%27s%20Kitchen%2C%20I%20would%20like%20to%20make%20a%20reservation."
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Book via WhatsApp"
+                >
+                  Book via WhatsApp
+                </a>
               </div>
 
-              <div class="hero-stats">
+              <div class="hero-stats" aria-label="Restaurant stats">
                 <div>
                   <strong>4.9/5</strong>
                   <span>Guest Rating</span>
@@ -95,12 +117,12 @@
               <div class="visual-panel main-panel">
                 <img
                   src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
-                  alt="Nigerian stew and rice dish"
+                  alt="Nigerian stew and jollof rice dish"
                 />
                 <div class="floating-tag tag-top">House Special</div>
                 <div class="floating-card card-left">
                   <p>Signature Jollof</p>
-                  <span>Smoky, rich & aromatic</span>
+                  <span>Smoky, rich &amp; aromatic</span>
                 </div>
               </div>
 
@@ -115,7 +137,15 @@
           </div>
         </section>
 
-        <section class="about" id="about">
+        <section class="about section-transition" id="about">
+          <div class="story-depth" aria-hidden="true">
+            <span class="depth-word w1">Authentic</span>
+            <span class="depth-word w2">Warm</span>
+            <span class="depth-word w3">Memorable</span>
+            <span class="depth-word w4">Heritage</span>
+            <span class="depth-word w5">Flavour</span>
+          </div>
+
           <div class="container about-grid">
             <div class="about-image-wrap">
               <img
@@ -146,27 +176,27 @@
           </div>
         </section>
 
-        <section class="menu section-space" id="menu">
+        <section class="menu section-space section-transition" id="menu">
           <div class="container">
             <div class="section-heading">
               <p class="eyebrow">Menu Highlights</p>
               <h2>Flavors crafted to linger.</h2>
             </div>
 
-            <div class="menu-filters">
+            <div class="menu-filters" aria-label="Menu filters">
               <button class="filter-btn active" data-filter="all">All</button>
               <button class="filter-btn" data-filter="specials">Specials</button>
               <button class="filter-btn" data-filter="rice">Rice Dishes</button>
-              <button class="filter-btn" data-filter="grill">Grill & BBQ</button>
+              <button class="filter-btn" data-filter="grill">Grill &amp; BBQ</button>
               <button class="filter-btn" data-filter="soup">Soups</button>
             </div>
 
             <div class="menu-grid">
-              <article class="menu-card" data-category="specials rice">
+              <article class="menu-card jollof-highlight" data-category="specials rice">
                 <div class="menu-image">
                   <img
                     src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80"
-                    alt="Jollof rice"
+                    alt="Classic jollof rice"
                   />
                 </div>
                 <div class="menu-body">
@@ -182,7 +212,7 @@
                 <div class="menu-image">
                   <img
                     src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80"
-                    alt="Grilled chicken and fish"
+                    alt="Fire-grilled chicken"
                   />
                 </div>
                 <div class="menu-body">
@@ -198,7 +228,7 @@
                 <div class="menu-image">
                   <img
                     src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
-                    alt="Nigerian soup"
+                    alt="Egusi soup"
                   />
                 </div>
                 <div class="menu-body">
@@ -214,12 +244,12 @@
                 <div class="menu-image">
                   <img
                     src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80"
-                    alt="Fried rice dish"
+                    alt="Yam and plantain platter"
                   />
                 </div>
                 <div class="menu-body">
                   <div class="menu-topline">
-                    <h3>Yam & Plantain Platter</h3>
+                    <h3>Yam &amp; Plantain Platter</h3>
                     <span>₦ 7,500</span>
                   </div>
                   <p>Golden yam fries and plantain with grilled protein, sauce, and a fresh salad.</p>
@@ -230,7 +260,7 @@
                 <div class="menu-image">
                   <img
                     src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80"
-                    alt="Fish meals"
+                    alt="Grilled tilapia"
                   />
                 </div>
                 <div class="menu-body">
@@ -246,7 +276,7 @@
                 <div class="menu-image">
                   <img
                     src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80"
-                    alt="African stew and meat"
+                    alt="Grace's family feast"
                   />
                 </div>
                 <div class="menu-body">
@@ -261,7 +291,7 @@
           </div>
         </section>
 
-        <section class="experience section-space" id="experience">
+        <section class="experience section-space section-transition" id="experience">
           <div class="container">
             <div class="section-heading small">
               <p class="eyebrow">Why Guests Return</p>
@@ -290,25 +320,41 @@
           </div>
         </section>
 
-        <section class="gallery section-space" id="gallery">
+        <section class="gallery section-space section-transition" id="gallery">
           <div class="container">
             <div class="section-heading">
               <p class="eyebrow">Gallery</p>
               <h2>Moments worth savoring.</h2>
             </div>
 
-            <div class="gallery-grid">
+            <div class="gallery-stage">
               <div class="gallery-item tall">
-                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80" alt="Restaurant dining table" />
+                <img
+                  src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=80"
+                  alt="Restaurant dining table"
+                  loading="lazy"
+                />
               </div>
               <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80" alt="Nigerian food plate" />
+                <img
+                  src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+                  alt="Nigerian food plate"
+                  loading="lazy"
+                />
               </div>
               <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=700&q=80" alt="Chef preparing food" />
+                <img
+                  src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=700&q=80"
+                  alt="Chef preparing food"
+                  loading="lazy"
+                />
               </div>
               <div class="gallery-item wide">
-                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80" alt="Restaurant ambiance" />
+                <img
+                  src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80"
+                  alt="Restaurant ambiance"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -323,24 +369,24 @@
 
             <div class="testimonial-grid">
               <blockquote>
-                "The jollof was exceptional — deeply flavorful, warm, and beautifully served. It felt like home, only better."
+                “The jollof was exceptional — deeply flavorful, warm, and beautifully served. It felt like home, only better.”
                 <footer>— Ada O.</footer>
               </blockquote>
 
               <blockquote>
-                "A beautiful place for dinner with family. The ambiance, hospitality, and quality were all top-tier."
+                “A beautiful place for dinner with family. The ambiance, hospitality, and quality were all top-tier.”
                 <footer>— Tunde B.</footer>
               </blockquote>
 
               <blockquote>
-                "Grace's Kitchen captures the soul of Nigerian food in the most elegant way. Every detail feels intentional."
+                “Grace's Kitchen captures the soul of Nigerian food in the most elegant way. Every detail feels intentional.”
                 <footer>— Chiamaka E.</footer>
               </blockquote>
             </div>
           </div>
         </section>
 
-        <section class="reservation section-space" id="reservation">
+        <section class="reservation section-space section-transition" id="reservation">
           <div class="container reservation-wrap">
             <div class="reservation-copy">
               <p class="eyebrow">Reserve</p>
@@ -348,6 +394,16 @@
               <p>
                 Whether it's a romantic dinner, family gathering, or a celebration, we create a warm dining space for every occasion.
               </p>
+              <div class="reservation-actions">
+                <a
+                  class="whatsapp-btn"
+                  href="https://wa.me/2348001234567?text=Hello%20Grace%27s%20Kitchen%2C%20I%20would%20like%20to%20make%20a%20reservation."
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book via WhatsApp
+                </a>
+              </div>
             </div>
 
             <form class="reservation-form" id="bookingForm">
@@ -382,7 +438,7 @@
         </section>
       </main>
 
-      <footer class="site-footer" id="contact">
+      <footer class="site-footer pixel-footer" id="contact">
         <div class="container footer-grid">
           <div>
             <div class="brand-block footer-brand">
@@ -428,13 +484,9 @@
       </footer>
     </div>
 
-    <!-- GSAP + ScrollTrigger from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-    <!-- Lenis for smooth scroll from CDN -->
     <script src="https://cdn.jsdelivr.net/gh/darkroomengineering/lenis@latest/bundled/lenis.js"></script>
-
     <script src="script.js"></script>
   </body>
 </html>
