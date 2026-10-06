@@ -5,50 +5,56 @@ const mainNav = document.querySelector('.main-nav');
 const bookingForm = document.getElementById('bookingForm');
 const dateInput = document.getElementById('date');
 const yearEl = document.getElementById('year');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-menuButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    menuButtons.forEach((btn) => btn.classList.remove('active'));
-    button.classList.add('active');
+function setDateDefaults() {
+  if (!dateInput) return;
 
-    const filter = button.dataset.filter;
-
-    menuCards.forEach((card) => {
-      const categories = card.dataset.category || '';
-      const shouldShow = filter === 'all' || categories.includes(filter);
-      card.style.display = shouldShow ? 'block' : 'none';
-    });
-  });
-});
-
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener('click', () => {
-    const isOpen = mainNav.classList.toggle('is-open');
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-  });
-
-  mainNav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      mainNav.classList.remove('is-open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-}
-
-if (dateInput) {
   const today = new Date();
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
+
   dateInput.min = `${yyyy}-${mm}-${dd}`;
   dateInput.value = `${yyyy}-${mm}-${dd}`;
 }
 
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
+function initMenuFilter() {
+  menuButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      menuButtons.forEach((btn) => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const filter = button.dataset.filter;
+
+      menuCards.forEach((card) => {
+        const categories = card.dataset.category || '';
+        const shouldShow = filter === 'all' || categories.includes(filter);
+        card.style.display = shouldShow ? 'block' : 'none';
+      });
+    });
+  });
 }
 
-if (bookingForm) {
+function initMobileNav() {
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('is-open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mainNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+}
+
+function initBookingForm() {
+  if (!bookingForm) return;
+
   bookingForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -64,71 +70,215 @@ if (bookingForm) {
 
     alert(`Thank you, ${name}! Your reservation for ${guests} guests on ${date} at ${time} has been received.`);
     bookingForm.reset();
-
-    if (dateInput) {
-      const today = new Date();
-      const yyyy = today.getFullYear();
-      const mm = String(today.getMonth() + 1).padStart(2, '0');
-      const dd = String(today.getDate()).padStart(2, '0');
-      dateInput.value = `${yyyy}-${mm}-${dd}`;
-    }
+    setDateDefaults();
   });
 }
 
+function initHeroMotion() {
+  if (!window.gsap || prefersReducedMotion) return;
 
+  const hero = document.querySelector('.hero');
+  const heroBg = document.querySelector('.hero-bg-image');
+  const heroCopy = document.querySelector('.hero-copy');
+  const heroVisual = document.querySelector('.hero-visual');
 
+  if (hero && heroBg) {
+    gsap.to(heroBg, {
+      scale: 1.15,
+      y: 20,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: hero,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  }
 
+  if (heroCopy) {
+    gsap.to(heroCopy, {
+      y: -30,
+      opacity: 0.8,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: hero,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  }
 
+  if (heroVisual) {
+    gsap.to(heroVisual, {
+      y: 30,
+      x: 10,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: hero,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    });
+  }
 
+  if (window.innerWidth > 768 && hero) {
+    hero.addEventListener('pointermove', (event) => {
+      const rect = hero.getBoundingClientRect();
+      const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+      const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
 
+      gsap.to('.hero-bg-image', {
+        x: offsetX * 36,
+        y: offsetY * 22,
+        duration: 0.75,
+        ease: 'power2.out',
+      });
 
+      gsap.to('.main-panel', {
+        rotationY: -14 + offsetX * 8,
+        rotationX: 5 - offsetY * 8,
+        x: offsetX * 18,
+        y: offsetY * 12,
+        duration: 0.75,
+        ease: 'power2.out',
+      });
 
+      gsap.to('.side-panel', {
+        rotationY: 20 + offsetX * 12,
+        rotationX: 8 - offsetY * 8,
+        x: offsetX * 20,
+        y: offsetY * 16,
+        duration: 0.75,
+        ease: 'power2.out',
+      });
+    });
+  }
+}
 
+function initSectionTransitions() {
+  if (!window.gsap || prefersReducedMotion) return;
 
+  const sections = document.querySelectorAll('.section-transition');
 
+  sections.forEach((section) => {
+    const stripCount = 18;
+    const stripWrapper = document.createElement('div');
+    stripWrapper.className = 'strip-reveal';
 
+    for (let i = 0; i < stripCount; i += 1) {
+      const strip = document.createElement('span');
+      strip.className = 'strip';
+      strip.style.transitionDelay = `${i * 0.05}s`;
+      stripWrapper.appendChild(strip);
+    }
 
+    section.appendChild(stripWrapper);
 
+    const strips = section.querySelectorAll('.strip');
 
+    gsap.fromTo(
+      strips,
+      { yPercent: 110, opacity: 0 },
+      {
+        yPercent: 0,
+        opacity: 1,
+        stagger: { each: 0.04, from: 'center' },
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 72%',
+          end: 'bottom 30%',
+          scrub: 1.4,
+        },
+      }
+    );
 
+    gsap.to(strips, {
+      yPercent: -110,
+      opacity: 0,
+      stagger: { each: 0.03, from: 'center' },
+      ease: 'power2.inOut',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 40%',
+        end: 'bottom 12%',
+        scrub: 1.4,
+      },
+    });
+  });
+}
 
+function initFooterPixelDissolve() {
+  const footer = document.querySelector('.pixel-footer');
+  if (!footer || !window.gsap || prefersReducedMotion) return;
 
+  const grid = document.createElement('div');
+  grid.className = 'pixel-grid';
+  footer.appendChild(grid);
 
+  gsap.fromTo(
+    grid,
+    { opacity: 0 },
+    {
+      opacity: 1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: footer,
+        start: 'top 90%',
+        toggleActions: 'play none none reverse',
+      },
+    }
+  );
 
+  gsap.to(grid, {
+    backgroundPosition: '200px 200px',
+    duration: 14,
+    ease: 'none',
+    repeat: -1,
+  });
+}
 
+function initSmoothScroll() {
+  if (!window.Lenis || prefersReducedMotion) return;
 
+  const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    wheelMultiplier: 0.9,
+    lerp: 0.07,
+  });
 
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
 
+  requestAnimationFrame(raf);
+  lenis.on('scroll', ScrollTrigger.update);
 
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
 
+  gsap.ticker.lagSmoothing(0);
+}
 
+function initAnimations() {
+  setDateDefaults();
+  initMenuFilter();
+  initMobileNav();
+  initBookingForm();
+  initHeroMotion();
+  initSectionTransitions();
+  initFooterPixelDissolve();
+  initSmoothScroll();
 
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+initAnimations();
