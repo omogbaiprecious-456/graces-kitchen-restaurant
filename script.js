@@ -5,7 +5,8 @@ const mainNav = document.querySelector('.main-nav');
 const bookingForm = document.getElementById('bookingForm');
 const dateInput = document.getElementById('date');
 const yearEl = document.getElementById('year');
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const prefersReducedMotion = reducedMotionQuery.matches;
 
 function setDateDefaults() {
   if (!dateInput) return;
@@ -72,6 +73,31 @@ function initBookingForm() {
     bookingForm.reset();
     setDateDefaults();
   });
+}
+
+function initSmoothScroll() {
+  if (!window.Lenis || prefersReducedMotion) return;
+
+  const lenis = new Lenis({
+    duration: 1.2,
+    smoothWheel: true,
+    wheelMultiplier: 0.9,
+    lerp: 0.07,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  gsap.ticker.lagSmoothing(0);
 }
 
 function initHeroMotion() {
@@ -167,6 +193,7 @@ function initSectionTransitions() {
     const stripCount = 18;
     const stripWrapper = document.createElement('div');
     stripWrapper.className = 'strip-reveal';
+    stripWrapper.style.setProperty('--strip-count', String(stripCount));
 
     for (let i = 0; i < stripCount; i += 1) {
       const strip = document.createElement('span');
@@ -241,29 +268,83 @@ function initFooterPixelDissolve() {
   });
 }
 
-function initSmoothScroll() {
-  if (!window.Lenis || prefersReducedMotion) return;
+function initMenu3D() {
+  if (prefersReducedMotion) return;
 
-  const lenis = new Lenis({
-    duration: 1.2,
-    smoothWheel: true,
-    wheelMultiplier: 0.9,
-    lerp: 0.07,
+  menuCards.forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      const rotateY = (x - 0.5) * 12;
+      const rotateX = (0.5 - y) * 14;
+
+      card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+
+    card.addEventListener('pointerleave', () => {
+      card.style.transform = '';
+    });
   });
 
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
+  const jollofCard = document.querySelector('.jollof-highlight');
+  if (jollofCard && window.gsap) {
+    gsap.to(jollofCard, {
+      y: -12,
+      rotationX: 5,
+      rotationY: -6,
+      scale: 1.02,
+      scrollTrigger: {
+        trigger: jollofCard,
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: 1,
+      },
+    });
   }
+}
 
-  requestAnimationFrame(raf);
-  lenis.on('scroll', ScrollTrigger.update);
+function initAboutWords() {
+  if (!window.gsap || prefersReducedMotion) return;
 
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
+  const depthWords = document.querySelectorAll('.depth-word');
+  depthWords.forEach((word, index) => {
+    gsap.to(word, {
+      y: -(index + 1) * 20,
+      x: index % 2 === 0 ? 18 : -18,
+      opacity: 0.8,
+      filter: 'blur(0px)',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.about',
+        start: 'top center',
+        end: 'bottom center',
+        scrub: true,
+      },
+    });
   });
+}
 
-  gsap.ticker.lagSmoothing(0);
+function initGallery3D() {
+  if (!window.gsap || prefersReducedMotion) return;
+
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  galleryItems.forEach((item, index) => {
+    gsap.to(item, {
+      y: index % 2 === 0 ? -18 : 18,
+      x: index % 3 === 0 ? 8 : -8,
+      rotationY: index % 2 === 0 ? 10 : -10,
+      rotationX: 8,
+      z: 40,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.gallery-stage',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: true,
+      },
+    });
+  });
 }
 
 function initAnimations() {
@@ -271,10 +352,13 @@ function initAnimations() {
   initMenuFilter();
   initMobileNav();
   initBookingForm();
+  initSmoothScroll();
   initHeroMotion();
   initSectionTransitions();
   initFooterPixelDissolve();
-  initSmoothScroll();
+  initMenu3D();
+  initAboutWords();
+  initGallery3D();
 
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
